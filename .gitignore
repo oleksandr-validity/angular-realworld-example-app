@@ -1,5 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+#cypress
+cypress/e2e/1-getting-started
+cypress/e2e/2-advanced-examples
+
+
 # compiled output
 /dist
 /tmp
@@ -7,6 +12,7 @@
 
 # dependencies
 /node_modules
+yarn.lock
 
 # IDEs and editors
 .vscode/
