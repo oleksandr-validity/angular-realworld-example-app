@@ -1,0 +1,39 @@
+{
+  "articles": [
+    {
+      "slug": "Request-from-API-Betty-245228",
+      "title": "Title 1",
+      "description": "API Testing",
+      "body": "Angular is cool Betty",
+      "tagList": [],
+      "createdAt": "2023-11-29T02:30:27.243Z",
+      "updatedAt": "2023-11-29T02:30:27.243Z",
+      "favorited": false,
+      "favoritesCount": 1,
+      "author": {
+        "username": "CyTestUser",
+        "bio": null,
+        "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    },
+    {
+      "slug": "hey-frieds-gg-245228",
+      "title": "Title 2",
+      "description": "This is a description",
+      "body": "This is a body of the article",
+      "tagList": [],
+      "createdAt": "2023-11-28T17:37:53.467Z",
+      "updatedAt": "2023-11-28T17:37:53.467Z",
+      "favorited": false,
+      "favoritesCount": 8,
+      "author": {
+        "username": "CyTestUser",
+        "bio": null,
+        "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    }
+  ],
+  "articlesCount": 2
+}

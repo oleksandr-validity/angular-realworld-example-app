@@ -1,6 +1,8 @@
 describe('API Testing', () => {
 
   beforeEach('Login to app',()=>{
+    cy.intercept('GET', 'https://api.realworld.io/api/tags', {fixture: 'tags.json'}).as('getTags')
+    //3rd parameter {fixture:...} is a value we want to use as a response
     cy.loginToApp()
   })
 
@@ -36,5 +38,29 @@ describe('API Testing', () => {
 
     // Delete article
     cy.get('button').contains('Delete Article').click()
+  })
+
+  it('Mock API response for Popular Tags section', ()=>{
+    cy.wait('@getTags')
+    cy.get('div.tag-list') // validate that modified response is reflected in the UI
+      .should('contain', 'welcome')
+      .and('contain', 'cypress')
+      .and('contain', 'qa')
+      .and('contain', 'automation')
+  })
+
+  it('Verify global feed likes count', ()=>{
+    cy.intercept('GET', 'https://api.realworld.io/api/articles*', {fixture: 'articles.json'}) //Mock API response with articles
+    cy.contains('a', 'Title 1').parent().find('button').should('contain', 1)
+    cy.contains('a', 'Title 2').parent().find('button').should('contain', 8)
+
+    cy.fixture('articles.json').then(file => {
+      const articleSlug = file.articles[1].slug
+      file.articles[1].favoritesCount = 9
+      // Mock API response after click on the like button
+      cy.intercept('POST', 'https://api.realworld.io/api/articles/'+ articleSlug+'/favorite', file)
+    })
+
+    cy.contains('a', 'Title 2').parent().find('button').click().should('contain', 9)
   })
 });
