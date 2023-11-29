@@ -33,7 +33,6 @@ describe('API Testing', () => {
         expect(xhr.response.body.article.title).to.eq(articleTitle)
         expect(xhr.response.body.article.body).to.eq(articleBody)
         expect(xhr.response.body.article.description).to.eq(articleDescription)
-       // const articleSlug = xhr.response.body.article.
     })
 
     // Delete article
